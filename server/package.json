@@ -1,0 +1,17 @@
+{
+  "name": "shorty",
+  "version": "1.0.0",
+  "description": "its a url shortener",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "nanoid": "^3.3.2",
+    "url-validation": "^2.1.0"
+  }
+}

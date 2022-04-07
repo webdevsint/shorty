@@ -1,0 +1,1 @@
+const documents=['short-urls'];module.exports=documents;

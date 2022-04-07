@@ -1,0 +1,1 @@
+const params=['url', 'id'];module.exports=params;

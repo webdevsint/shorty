@@ -1,0 +1,1 @@
+const decrypts="const url = new Decryption(item.url).decryptedText; const id = new Decryption(item.id).decryptedText;const object={id:this.id,url:url, id:id,};";const encrypts="const url = new Encryption(req.body.url).encryptedText; const id = new Encryption(req.body.id).encryptedText; data.addEntry(url,id);";module.exports={ decrypts, encrypts }

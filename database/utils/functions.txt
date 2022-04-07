@@ -1,0 +1,1 @@
+const removeEntry=e=>{database.splice(e,1)},save=()=>{let e={db:database};fs.writeFileSync(path.resolve(__dirname,"data.json"),JSON.stringify(e))};module.exports={database:database,addEntry:addEntry,removeEntry:removeEntry,save:save};
