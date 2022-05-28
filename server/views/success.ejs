@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>success - shorty</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header" style="padding-bottom: 1rem">
+      <h1>shorty,</h1>
+      <p>the <a href="#">open-source</a> url shortener</p>
+    </div>
+    <div class="container">
+      <div class="error">short created!</div>
+      <a href="/?id=<%= id %>">https://shorty.nehanyaser.repl.co/?id=<%= id %></a>
+      <p style="margin: 10px 0;"><a href="#" id="share"><span>share</span></a> this short</p>
+    </div>
+    <div class="footer">
+      <center>
+        <p>
+          developed by
+          <a href="https://instagram.com/nehan_yaser/">nehan yaser</a>
+        </p>
+      </center>
+    </div>
+
+    <script>
+      const shareData = {
+        title: '<%= id %> - shorty url',
+        url: 'https://shorty.nehanyaser.repl.co/?id=<%= id %>'
+      }
+
+      const btn = document.getElementById('share');
+    
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.share(shareData)
+        } catch(err) {
+          console.log(err)
+        }
+      });
+    </script>
+  </body>
+</html>

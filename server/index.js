@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const { nanoid } = require("nanoid");
 const axios = require("axios");
 const validUrl = require("url-validation");
@@ -11,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: !1 }));
@@ -21,7 +21,9 @@ app.get("/", function (req, res) {
   const id = req.query.id;
 
   axios
-    .get(`http://localhost:5000/?document=short-urls&api_key=${process.env.API_KEY}`)
+    .get(
+      process.env.API
+    )
     .then(function (response) {
       const data = response.data;
 
@@ -30,14 +32,14 @@ app.get("/", function (req, res) {
       } else if (!id) {
         res.redirect("/shorten");
       } else {
-        res.status(400).sendFile(path.resolve("./", "views/", "404.html"));
+        res.status(400).render("404");
       }
     })
     .catch((err) => console.log(err));
 });
 
 app.get("/shorten", (req, res) => {
-  res.sendFile(path.resolve("./", "views/", "index.html"));
+  res.render("index");
 });
 
 app.post("/shorten", (req, res) => {
@@ -51,18 +53,14 @@ app.post("/shorten", (req, res) => {
   }
 
   if (!validUrl(req.body.url)) {
-    res.status(400).sendFile(path.resolve("./", "views/", "invalid.html"));
+    res.status(400).render("invalid");
   } else {
     axios.post(
-      `http://localhost:5000/?document=short-urls&api_key=${process.env.API_KEY}`,
+      process.env.API,
       new Payload(req.body.url, id)
     );
 
-    res.send(
-      `Short URL: <a href="/?id=${id}">
-      http://localhost:5000/?id=${id}
-      </a>`
-    );
+    res.render("success", { id: id });
   }
 });
 

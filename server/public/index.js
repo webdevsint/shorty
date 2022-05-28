@@ -1,7 +1,7 @@
 const list = document.querySelector(".shorts-list");
 
 fetch(
-  "http://localhost:5000/?document=short-urls&api_key="
+  "https://shorty-db.nehanyaser.repl.co/?document=short-urls&api_key=zIEkkgG3IMPH9dr8"
 )
   .then((res) => res.json())
   .then((data) => {
