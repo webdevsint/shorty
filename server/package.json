@@ -1,10 +1,10 @@
 {
   "name": "shorty",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "the open-source url shortener",
   "main": "index.js",
   "keywords": [],
-  "author": "",
+  "author": "Nehan Yaser",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.26.1",
