@@ -26,7 +26,6 @@ body {
 
 .container {
   display: flex;
-  /* height: 100vh; */
 }
 
 .hero {
@@ -258,6 +257,7 @@ span {
   font-size: 1.2rem;
   color: #750d37;
   margin-bottom: 1rem;
+  display: none;
 }
 
 .alert {
