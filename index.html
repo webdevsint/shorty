@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shorty</title>
+    <link
+      rel="stylesheet"
+      href="https://fontawesome-pro.vercel.app/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Shorty</h1>
+          <p>Just another open source URL shortener.</p>
+          <p>
+            Developed by
+            <a href="https://nehanyaser.vercel.app/" target="_blank"
+              >Nehan Yaser</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <main>
+        <div class="form-container">
+          <form>
+            <h2>Shorten your URL</h2>
+            <div class="input-container">
+              <input
+                type="text"
+                id="title-input"
+                class="animated-input"
+                placeholder=" "
+                required
+              />
+              <label for="title-input" class="input-label">Title</label>
+              <span class="input-underline"></span>
+              <!-- The animated underline -->
+            </div>
+
+            <div class="input-container">
+              <input
+                type="text"
+                id="url-input"
+                class="animated-input"
+                placeholder=" "
+                required
+              />
+              <label for="url-input" class="input-label">URL</label>
+              <span class="input-underline"></span>
+              <!-- The animated underline -->
+            </div>
+
+            <button type="submit" class="form-button">Shorten</button>
+          </form>
+        </div>
+
+        <hr />
+
+        <div class="url-list">
+          <p class="heading">Your shortened URLs:</p>
+          <ol class="url-list-items">
+            <!-- <li>
+              <button class="copy-btn" title="Copy URL"><i class="fa-regular fa-copy"></i></button>
+              <p>Nehan Yaser - Instagram</p>
+              <p><span>URL ID:</span> <a href="/jHs_es9">jHs_es9</a></p>
+            </li> -->
+          </ol>
+
+          <div class="alert"><h3>No Short URLs</h3></div>
+        </div>
+      </main>
+    </div>
+
+    <div id="toast-container">
+        <!-- Toast messages will be dynamically added here -->
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
