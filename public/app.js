@@ -45,15 +45,11 @@ function showToast(message, type = "info", duration = 3000) {
 }
 
 function renderShorts() {
-  fetch("/shorts")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((shorts) => {
-      document.querySelector(".url-list-items").innerHTML = ""; // Clear existing items
+  
+  // get shorts from local storage
+  const shorts = JSON.parse(localStorage.getItem("shorts")) || [];
+  
+  document.querySelector(".url-list-items").innerHTML = "";
       document.querySelector(".heading").style.display = "block";
       document.querySelector(".alert").style.display = "none";
 
@@ -67,11 +63,6 @@ function renderShorts() {
         document.querySelector(".heading").style.display = "none";
         document.querySelector(".alert").style.display = "flex";
       }
-    })
-    .catch((error) => {
-      console.error("Error fetching shorts:", error);
-      showToast("Failed to load shorts. Please try again later.", "error");
-    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -104,10 +95,16 @@ document.querySelector("form").addEventListener("submit", (e) => {
       console.log("Short created:", data);
 
       showToast("URL shortened successfully!", "info");
+
+      // store in the local storage
+      const storedShorts = JSON.parse(localStorage.getItem("shorts")) || [];
+      storedShorts.push(data);
+      localStorage.setItem("shorts", JSON.stringify(storedShorts));
+
       renderShorts();
 
-      document.querySelector("#title-input").value = ""; // Clear the input field
-      document.querySelector("#url-input").value = ""; // Clear the input field
+      document.querySelector("#title-input").value = "";
+      document.querySelector("#url-input").value = "";
       document.querySelector(".alert").style.display = "none";
     });
   }
