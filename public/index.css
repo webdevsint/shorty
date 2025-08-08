@@ -68,7 +68,7 @@ main {
 .form-container,
 .url-list {
   flex: 1 1 0;
-  min-height: 0; /* Important for flex children with overflow */
+  min-height: 0;
   padding: 2rem;
 }
 
@@ -87,63 +87,56 @@ form h2 {
 }
 
 .input-container {
-  /* margin-top: 1rem; */
   position: relative;
-  width: 100%; /* Take full width of parent */
-  max-width: 300px; /* Max width for larger screens */
+  width: 100%;
+  max-width: 300px;
 }
 
-/* Styling for the input field */
 .animated-input {
   width: 100%;
   padding: 12px 0;
   border: none;
-  border-bottom: 1px solid #d1d5db; /* Light gray border for bottom */
+  border-bottom: 1px solid #d1d5db;
   background-color: transparent;
   font-size: 16px;
-  color: #210124; /* Darker text color */
-  outline: none; /* Remove default focus outline */
-  position: relative; /* Needed for z-index if label overlaps */
-  z-index: 1; /* Ensure input is above the underline span */
-  box-sizing: border-box; /* Include padding in element's total width */
+  color: #210124;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
 }
 
-/* Styling for the label */
 .input-label {
   position: absolute;
-  top: 12px; /* Align with input text */
+  top: 12px;
   left: 0;
-  color: #9ca3af; /* Lighter gray label color */
+  color: #9ca3af;
   font-size: 16px;
-  pointer-events: none; /* Allows clicks to pass through to the input */
-  transition: all 0.3s ease-in-out; /* Smooth transition for label movement */
-  z-index: 2; /* Ensure label is above input */
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
 }
 
-/* Animated underline span */
 .input-underline {
   position: absolute;
-  bottom: 0; /* Position at the bottom of the container */
+  bottom: 0;
   left: 0;
-  width: 0; /* Initially no width */
+  width: 0;
   height: 2px;
-  background-color: #750d37; /* Theme color for underline on focus */
-  transition: width 0.3s ease-in-out; /* Smooth transition for width */
-  z-index: 0; /* Ensure underline is below input */
+  background-color: #750d37;
+  transition: width 0.3s ease-in-out;
+  z-index: 0;
 }
 
-/* Focus state: Expand underline */
 .animated-input:focus ~ .input-underline {
-  /* Use general sibling selector to target the underline span */
-  width: 100%; /* Expand underline to full width */
+  width: 100%;
 }
 
-/* Label animation: Move up, shrink, and change color when focused or filled */
 .animated-input:focus + .input-label,
 .animated-input:not(:placeholder-shown) + .input-label {
-  top: -12px; /* Move label above the input */
-  font-size: 12px; /* Shrink label font size */
-  color: #750d37; /* Theme color for label on focus */
+  top: -12px;
+  font-size: 12px;
+  color: #750d37;
 }
 
 form button {
@@ -156,7 +149,7 @@ form button {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  width: 100%; /* Take full width of parent */
+  width: 100%;
   max-width: 300px;
   transition: 0.2s ease-in-out;
 }
@@ -260,6 +253,26 @@ span {
   display: none;
 }
 
+.clear-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.clear-button {
+  background-color: #f7f9f7;
+  color: #750d37;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: fit-content;
+  display: none;
+}
+
 .alert {
   display: flex;
   justify-content: center;
@@ -272,27 +285,26 @@ span {
 
 #toast-container {
   position: fixed;
-  top: 32px; /* Changed from bottom to top */
+  top: 32px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* space-y-2 (if multiple toasts were allowed) */
+  gap: 8px;
 }
 
-/* Toast message styling */
 .toast {
   opacity: 0;
-  transform: translateY(-20px); /* Changed from 20px to -20px */
+  transform: translateY(-20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  padding: 12px 24px; /* px-6 py-3 */
-  border-radius: 8px; /* rounded-lg */
+  padding: 12px 24px;
+  border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-xl */
-  color: #ffffff; /* text-white */
-  text-align: center; /* text-center */
-  background-color: #a61b4d; /* New single color */
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color: #ffffff;
+  text-align: center;
+  background-color: #a61b4d;
 }
 
 .toast.show {
